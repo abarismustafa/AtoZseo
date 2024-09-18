@@ -315,6 +315,9 @@ import AddHoliday from "./components/Holiday-list/AddHoliday";
 import HotelCoupon from "./components/hotelComp/hotelCoupon/HotelCoupon";
 import HotelVocherUpload from "./components/hotelComp/hotelVocherUpload/HotelVocherUpload";
 import DashboardLeadPage from "./pages/Dashboard-Lead/Index";
+import SendEmail from "./components/emailSetings/sendEmail/SendEmail";
+import EmailTemplet from "./components/emailSetings/emailTemplet/EmailTemplet";
+import MailSeting from "./components/emailSetings/mailSetting/MailSettings";
 //---------------------JUNAID IMPORT END --------------------------
 //---------------------JUNAID IMPORT Start Goatx --------------------------
 // import HotelGroupRequestListPage from './pages/viaggioWebPages/hotelGroupRequestListPage';
@@ -1333,7 +1336,7 @@ function App() {
               <Route path="/viewInvoice" element={<RemarkPayment />} />
               <Route path="/flight-booking-txn-list/payment-remark/viewInvoice" element={<ViewInvoice />} />
 
-              
+
               <Route path="balance-ledger" element={<BalanceLedger />} />
               <Route path="Vendor-Account-Logs" element={<VenderLogs />} />
               <Route path="api-management" element={<ApiManage />} />
@@ -1341,13 +1344,18 @@ function App() {
 
               <Route path="holiday-markup-list" element={<HolidayMarkup />} />
               <Route path="Holiday-Discount" element={<HolidayDIscount />} />
-              <Route path="Holiday-List" element={<HolidayListPage/>} />
-              <Route path="Add-Holiday" element={<AddHoliday/>} />
+              <Route path="Holiday-List" element={<HolidayListPage />} />
+              <Route path="Add-Holiday" element={<AddHoliday />} />
+
+
+
+              {/* -------------//shoib's Routes --------------------For ATOZ SEO------------------- */}
+              <Route path="send-email" element={<SendEmail />} />
+              <Route path="mail-setings" element={<MailSeting />} />
+              <Route path="mail-templates" element={<EmailTemplet />} />
+
 
               <Route path="*" element={<PageNotFound />} />
-
-
-
             </Route>
           </>
         )}
