@@ -318,6 +318,7 @@ import DashboardLeadPage from "./pages/Dashboard-Lead/Index";
 import SendEmail from "./components/emailSetings/sendEmail/SendEmail";
 import EmailTemplet from "./components/emailSetings/emailTemplet/EmailTemplet";
 import MailSeting from "./components/emailSetings/mailSetting/MailSettings";
+import CreatePages from "./components/pages/createPage/CreatePages";
 //---------------------JUNAID IMPORT END --------------------------
 //---------------------JUNAID IMPORT Start Goatx --------------------------
 // import HotelGroupRequestListPage from './pages/viaggioWebPages/hotelGroupRequestListPage';
@@ -1353,6 +1354,8 @@ function App() {
               <Route path="send-email" element={<SendEmail />} />
               <Route path="mail-setings" element={<MailSeting />} />
               <Route path="mail-templates" element={<EmailTemplet />} />
+
+              <Route path="create-a-pages" element={<CreatePages />} />
 
 
               <Route path="*" element={<PageNotFound />} />

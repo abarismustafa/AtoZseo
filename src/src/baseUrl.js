@@ -1,5 +1,0 @@
-export const baseUrl = 'https://backoffice.adamclick.com/api/'
-export const baseUrlImage = 'https://backoffice.adamclick.com/api/cloudinary/'
-// export const baseUrVideosbefore = 'https://backoffice.adamclick.com/api/cloudinary/video/'
-export const baseUrVideos = 'https://backoffice.adamclick.com/api/cloudinary/video/'
-// export const baseUrLKycVideos = 'https://backoffice.adamclick.com/api/cloudinary/addVideo/'
