@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import Breadcrumbs from "../../../common/breadcrumb/Breadcrumbs";
 import CustomInputField from "../../../common/CustomInputField";
 import JoditEditor from "jodit-react";
-import DatePicker from "react-datepicker";  // assuming you use this for Posted Date
+import DatePicker from "react-datepicker"; // assuming you use this for Posted Date
 import "react-datepicker/dist/react-datepicker.css";
 
 function CreatePages() {
@@ -21,11 +21,11 @@ function CreatePages() {
         postedDate: new Date(),
         metaDescription: "",
         metaKeywords: "",
-        access: "all",  // default option for access
+        access: "all", // default option for access
         allLanguageUsers: false,
-        status: "active",  // assuming 'active' and 'inactive'
+        status: "active", // assuming 'active' and 'inactive'
         sortOrder: 0,
-        showOnHeader: false
+        showOnHeader: false,
     });
     const params = useParams();
 
@@ -57,7 +57,6 @@ function CreatePages() {
 
     const submitForm = async (values) => {
         try {
-            // Placeholder for the API call
             console.log("Submitted Values: ", values);
             toastSuccessMessage();
         } catch (error) {
@@ -96,10 +95,11 @@ function CreatePages() {
                                             <div className="tbl-caption tbl-caption-2">
                                                 <h4 className="heading mb-0">{params?.id ? "Edit Page" : "Create New Page"}</h4>
                                             </div>
-                                            <form className="tbl-captionn" onSubmit={handleSubmit}>
+                                            <form className="row tbl-captionn" onSubmit={handleSubmit}>
 
                                                 {/* Page Title */}
-                                                <div className="col-xl-12 mb-3">
+                                                <div className="col-xl-4 mb-3">
+                                                    <label htmlFor="title" className="m-2"><b>Page Title</b></label>
                                                     <CustomInputField
                                                         type="text"
                                                         value={values.title}
@@ -114,7 +114,8 @@ function CreatePages() {
                                                 </div>
 
                                                 {/* Page Name */}
-                                                <div className="col-xl-12 mb-3">
+                                                <div className="col-xl-4 mb-3">
+                                                    <label htmlFor="name" className="m-2"><b>Page Name</b></label>
                                                     <CustomInputField
                                                         type="text"
                                                         value={values.name}
@@ -129,7 +130,8 @@ function CreatePages() {
                                                 </div>
 
                                                 {/* Page URL */}
-                                                <div className="col-xl-12 mb-3">
+                                                <div className="col-xl-4 mb-3">
+                                                    <label htmlFor="url" className="m-2"><b>Page URL</b></label>
                                                     <CustomInputField
                                                         type="text"
                                                         value={values.url}
@@ -144,33 +146,26 @@ function CreatePages() {
                                                 </div>
 
                                                 {/* Posted Date */}
-                                                <div className="col-xl-12 mb-3">
-                                                    <label className="m-2"><b>Posted Date</b></label>
-                                                    <DatePicker
-                                                        selected={values.postedDate}
-                                                        onChange={(date) => setFieldValue('postedDate', date)}
-                                                        dateFormat="yyyy-MM-dd"
-                                                        className="form-control"
+                                                <div className="col-xl-4 mb-3">
+                                                    <label htmlFor="postedDate" className="m-2"><b>Posted Date</b></label>
+                                                    <CustomInputField
+                                                        type="date"
+                                                        value={values.postedDate}
+                                                        hasError={errors.postedDate && touched.postedDate}
+                                                        onChange={handleChange}
+                                                        onBlur={handleBlur}
+                                                        errorMsg={errors.postedDate}
+                                                        id="postedDate"
+                                                        name="postedDate"
                                                     />
                                                 </div>
 
                                                 {/* Meta Description */}
-                                                <div className="col-xl-12 mb-3">
-                                                    <CustomInputField
-                                                        type="text"
-                                                        value={values.metaDescription}
-                                                        hasError={errors.metaDescription && touched.metaDescription}
-                                                        onChange={handleChange}
-                                                        onBlur={handleBlur}
-                                                        errorMsg={errors.metaDescription}
-                                                        id="metaDescription"
-                                                        name="metaDescription"
-                                                        placeholder="Meta Description"
-                                                    />
-                                                </div>
+                                              
 
                                                 {/* Meta Keywords */}
-                                                <div className="col-xl-12 mb-3">
+                                                <div className="col-xl-4 mb-3">
+                                                    <label htmlFor="metaKeywords" className="m-2"><b>Meta Keywords</b></label>
                                                     <CustomInputField
                                                         type="text"
                                                         value={values.metaKeywords}
@@ -185,13 +180,14 @@ function CreatePages() {
                                                 </div>
 
                                                 {/* Who can access this page? */}
-                                                <div className="col-xl-12 mb-3">
-                                                    <label className="m-2"><b>Who can access this page?</b></label>
+                                                <div className="col-xl-4 mb-3">
+                                                    <label htmlFor="access" className="m-2"><b>Who can access this page?</b></label>
                                                     <select
                                                         className="form-select"
                                                         name="access"
                                                         onChange={handleChange}
                                                         value={values.access}
+                                                        id="access"
                                                     >
                                                         <option value="all">All Users</option>
                                                         <option value="admin">Admin Only</option>
@@ -199,27 +195,15 @@ function CreatePages() {
                                                     </select>
                                                 </div>
 
-                                                {/* Show the page for all language users? */}
-                                                <div className="col-xl-12 mb-3">
-                                                    <label className="m-2">
-                                                        <input
-                                                            type="checkbox"
-                                                            name="allLanguageUsers"
-                                                            checked={values.allLanguageUsers}
-                                                            onChange={handleChange}
-                                                        />
-                                                        {" "}Show the page for all language users?
-                                                    </label>
-                                                </div>
-
                                                 {/* Status */}
-                                                <div className="col-xl-12 mb-3">
-                                                    <label className="m-2"><b>Status</b></label>
+                                                <div className="col-xl-4 mb-3">
+                                                    <label htmlFor="status" className="m-2"><b>Status</b></label>
                                                     <select
                                                         className="form-select"
                                                         name="status"
                                                         onChange={handleChange}
                                                         value={values.status}
+                                                        id="status"
                                                     >
                                                         <option value="active">Active</option>
                                                         <option value="inactive">Inactive</option>
@@ -227,7 +211,8 @@ function CreatePages() {
                                                 </div>
 
                                                 {/* Sort Order */}
-                                                <div className="col-xl-12 mb-3">
+                                                <div className="col-xl-4 mb-3">
+                                                    <label htmlFor="sortOrder" className="m-2"><b>Sort Order</b></label>
                                                     <CustomInputField
                                                         type="number"
                                                         value={values.sortOrder}
@@ -242,29 +227,41 @@ function CreatePages() {
                                                 </div>
 
                                                 {/* Display the page link on header menu bar */}
-                                                <div className="col-xl-12 mb-3">
-                                                    <label className="m-2">
+                                                <div className="col-xl-4 mb-3">
+                                                    <label htmlFor="showOnHeader" className="m-2">
                                                         <input
                                                             type="checkbox"
                                                             name="showOnHeader"
                                                             checked={values.showOnHeader}
                                                             onChange={handleChange}
+                                                            id="showOnHeader"
                                                         />
                                                         {" "}Display the page link on header menu bar?
                                                     </label>
                                                 </div>
-
+                                                <div className="col-xl-12 mb-3">
+                                                    <label htmlFor="metaDescription" className="m-2"><b>Meta Description</b></label>
+                                                    <JoditEditor
+                                                        value={values.metaDescription}
+                                                        tabIndex={1}
+                                                        onBlur={(newContent) => setFieldValue("metaDescription", newContent)}
+                                                        onChange={(newContent) => setFieldValue("metaDescription", newContent)}
+                                                    />
+                                                    {errors.metaDescription && touched.metaDescription && (
+                                                        <div className="text-danger mt-1">{errors.metaDescription}</div>
+                                                    )}
+                                                </div>
                                                 {/* Submit and Cancel Buttons */}
-                                                <div>
+                                                <div className="col-xl-12">
                                                     <Link to="#" className="btn btn-danger light ms-1">
                                                         Cancel
                                                     </Link>
                                                     <button
-                                                        className="btn btn-primary me-1"
                                                         type="submit"
+                                                        className="btn btn-primary"
                                                         disabled={!isValid || !dirty}
                                                     >
-                                                        {params?.id ? "Update" : "Save"}
+                                                        {params?.id ? "Update" : "Create"}
                                                     </button>
                                                 </div>
                                             </form>
@@ -276,7 +273,6 @@ function CreatePages() {
                     );
                 }}
             </Formik>
-
             <ToastContainer />
         </>
     );
